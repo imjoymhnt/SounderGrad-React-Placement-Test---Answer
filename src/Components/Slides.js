@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import {Row, Col, Card, Button} from 'antd'
+import {Row, Col, Button} from 'antd'
 import CustomCard from './CustomCard'
 
 const Slides = () => {
     const [index, setIndex] = useState(0)
-    const [nextDisable, setNextDisable] = useState(false)
-    const [prevDisable, setPrevDisable] = useState(false)
-    const [restartDisable, setRestartDisable] = useState(false)
+
     const data = [
         {
             title: "Slide 1",
@@ -46,9 +44,9 @@ const Slides = () => {
                 lg={{ span: 16, offset: 4 }}
                 xl={{ span: 16, offset: 4 }}
                 xxl={{ span: 16, offset: 4 }}>
-            <Button disabled={index === 0} type='primary' style={{marginLeft: "2rem"}} onClick={handleRestart}>Restart</Button>
-            <Button disabled={index === 0} type='primary' style={{marginLeft: "2rem"}} onClick={handlePrev}>Prev</Button>
-            <Button disabled={index === data.length -1} type='primary' style={{marginLeft: "2rem"}} onClick={handleNext}>Next</Button>
+            <Button disabled={index === 0} type='primary' style={{marginLeft: "2rem"}} onClick={handleRestart} data-testid="button-restart">Restart</Button>
+            <Button disabled={index === 0} type='primary' style={{marginLeft: "2rem"}} onClick={handlePrev} data-testid="button-prev">Prev</Button>
+            <Button disabled={index === data.length -1} type='primary' style={{marginLeft: "2rem"}} onClick={handleNext} data-testid="button-next">Next</Button>
         </Col>
         <br />
         <br />
@@ -59,7 +57,6 @@ const Slides = () => {
                 lg={{ span: 16, offset: 4 }}
                 xl={{ span: 16, offset: 4 }}
                 xxl={{ span: 16, offset: 4 }}>
-        {/* {data.map((item, idx) => <CustomCard title={item.title} text={item.text} />)} */}
         <CustomCard title={data[index].title} text={data[index].text} />
         </Col>
     </Row>
